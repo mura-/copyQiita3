@@ -1,0 +1,21 @@
+%h1 Items
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Content
+      %th
+      %th
+      %th
+  %tbody
+    - @items.each do |item|
+      %tr
+        %td=item.title
+        %td=item.content
+        %td=link_to 'Show', item 
+        %td=link_to 'Edit', edit_item_path(item)
+        %td=link_to 'Delete', item, method: :delete, :data => { confirm: '本当にいいですか？'}
+
+%br
+=link_to 'New', new_item_path

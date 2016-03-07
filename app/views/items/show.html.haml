@@ -1,0 +1,17 @@
+%p#notice= notice
+%h1= @item.title
+%p= @item.content
+
+#stock-link
+  - if @stock.id.present?
+    = render partial: 'stocks/unstock', locals: { stock: @stock }
+  - else
+    = render partial: 'stocks/stock', locals: { item: @item }
+
+= render 'comments/form'
+= render partial: 'comments/comment', collection: @comments
+
+= link_to 'Edit', edit_item_path(@item)
+\|
+= link_to 'Back', items_path
+
